@@ -5,25 +5,33 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Ball_AttachTransformData : ABS_AttachTransformData
 {
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (
-            other.gameObject.GetComponent<XRSocketInteractor>()
-            && other.transform.parent.gameObject.GetComponent<StickData>()
-        )
+        if (other.gameObject.GetComponent<Stick_AttachTransformData>())
         {
-            isInSocketTrigger = true;
+            if (
+                !other.gameObject.GetComponent<Stick_AttachTransformData>().isAttached
+                && other.transform.parent.gameObject
+                    .GetComponent<XRGrabInteractable>()
+                    .interactionLayers == InteractionLayerMask.GetMask("Attached Object")
+                && !other.gameObject.GetComponent<Stick_AttachTransformData>().attachedObj
+                    != gameObject
+            )
+            {
+                gameObject.GetComponent<XRSocketInteractor>().enabled = false;
+                canBeAttached = true;
+                attachedObj = other.gameObject;
+            }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (
-            other.gameObject.GetComponent<XRSocketInteractor>()
-            && other.transform.parent.gameObject.GetComponent<StickData>()
-        )
+        if (other.gameObject.GetComponent<Stick_AttachTransformData>())
         {
-            isInSocketTrigger = false;
+            gameObject.GetComponent<XRSocketInteractor>().enabled = true;
+            canBeAttached = false;
+            attachedObj = null;
         }
     }
 }

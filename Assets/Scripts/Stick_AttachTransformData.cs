@@ -7,10 +7,7 @@ public class Stick_AttachTransformData : ABS_AttachTransformData
 {
     void OnTriggerEnter(Collider other)
     {
-        if (
-            other.gameObject.GetComponent<XRSocketInteractor>()
-            && other.transform.parent.gameObject.GetComponent<BallData>()
-        )
+        if (other.gameObject.GetComponent<Ball_AttachTransformData>())
         {
             transform.parent.gameObject.GetComponent<XRGrabInteractable>().attachTransform =
                 transform;
@@ -19,12 +16,9 @@ public class Stick_AttachTransformData : ABS_AttachTransformData
 
     void OnTriggerStay(Collider other)
     {
-        if (
-            other.gameObject.GetComponent<XRSocketInteractor>()
-            && other.transform.parent.gameObject.GetComponent<BallData>()
-        )
+        if (other.gameObject.GetComponent<Ball_AttachTransformData>() && !isAttached)
         {
-            isInSocketTrigger = true;
+            canBeAttached = true;
 
             Transform parent = transform.parent;
             Vector3 temp = new Vector3(
@@ -33,17 +27,17 @@ public class Stick_AttachTransformData : ABS_AttachTransformData
                 -parent.eulerAngles.z
             );
             transform.localRotation = Quaternion.Euler(temp);
+
+            attachedObj = other.gameObject;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (
-            other.gameObject.GetComponent<XRSocketInteractor>()
-            && other.transform.parent.gameObject.GetComponent<BallData>()
-        )
+        if (other.gameObject.GetComponent<Ball_AttachTransformData>())
         {
-            isInSocketTrigger = false;
+            canBeAttached = false;
+            attachedObj = null;
         }
     }
 }

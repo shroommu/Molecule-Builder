@@ -53,7 +53,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 10
   m_AttachTransform: {fileID: 3376679027835968968}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowInteractableHoverMeshes: 1
+  m_ShowInteractableHoverMeshes: 0
   m_InteractableHoverMeshMaterial: {fileID: 0}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
@@ -116,8 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b230727a644cf4f9cc16e911c252f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInSocketTrigger: 0
+  canBeAttached: 0
   isAttached: 0
+  attachedObj: {fileID: 0}
 --- !u!54 &511427960871107735
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -218,7 +219,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 10
   m_AttachTransform: {fileID: 9054551732461319656}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -250,7 +251,7 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowInteractableHoverMeshes: 1
+  m_ShowInteractableHoverMeshes: 0
   m_InteractableHoverMeshMaterial: {fileID: 0}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
@@ -281,8 +282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b230727a644cf4f9cc16e911c252f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInSocketTrigger: 0
+  canBeAttached: 0
   isAttached: 0
+  attachedObj: {fileID: 0}
 --- !u!54 &6419488090157718976
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -352,7 +354,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 10
   m_AttachTransform: {fileID: 1530236951163305878}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -384,7 +386,7 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowInteractableHoverMeshes: 1
+  m_ShowInteractableHoverMeshes: 0
   m_InteractableHoverMeshMaterial: {fileID: 0}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
@@ -415,8 +417,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b230727a644cf4f9cc16e911c252f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInSocketTrigger: 0
+  canBeAttached: 0
   isAttached: 0
+  attachedObj: {fileID: 0}
 --- !u!54 &7989035984040394525
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -486,7 +489,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 10
   m_AttachTransform: {fileID: 7037481727052460800}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -518,7 +521,7 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowInteractableHoverMeshes: 1
+  m_ShowInteractableHoverMeshes: 0
   m_InteractableHoverMeshMaterial: {fileID: 0}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
@@ -549,8 +552,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b230727a644cf4f9cc16e911c252f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInSocketTrigger: 0
+  canBeAttached: 0
   isAttached: 0
+  attachedObj: {fileID: 0}
 --- !u!54 &519316122258323311
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -651,7 +655,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 10
   m_AttachTransform: {fileID: 4838314932421915330}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -683,7 +687,7 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowInteractableHoverMeshes: 1
+  m_ShowInteractableHoverMeshes: 0
   m_InteractableHoverMeshMaterial: {fileID: 0}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
@@ -714,8 +718,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b230727a644cf4f9cc16e911c252f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInSocketTrigger: 0
+  canBeAttached: 0
   isAttached: 0
+  attachedObj: {fileID: 0}
 --- !u!54 &2981122965226182020
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -785,7 +790,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 10
   m_AttachTransform: {fileID: 5902618207453975741}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -817,7 +822,7 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowInteractableHoverMeshes: 1
+  m_ShowInteractableHoverMeshes: 0
   m_InteractableHoverMeshMaterial: {fileID: 0}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
@@ -848,8 +853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b230727a644cf4f9cc16e911c252f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInSocketTrigger: 0
+  canBeAttached: 0
   isAttached: 0
+  attachedObj: {fileID: 0}
 --- !u!54 &4486390397109930974
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1012,7 +1018,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 10
   m_AttachTransform: {fileID: 1584830239207814512}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -1044,7 +1050,7 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowInteractableHoverMeshes: 1
+  m_ShowInteractableHoverMeshes: 0
   m_InteractableHoverMeshMaterial: {fileID: 0}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
@@ -1075,8 +1081,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b230727a644cf4f9cc16e911c252f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInSocketTrigger: 0
+  canBeAttached: 0
   isAttached: 0
+  attachedObj: {fileID: 0}
 --- !u!54 &7284185969734623731
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1267,7 +1274,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 2
+    m_Bits: 5
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -1298,7 +1305,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1550843593904523543}
         m_TargetAssemblyTypeName: BallData, Assembly-CSharp
-        m_MethodName: SetAttachTransformStates
+        m_MethodName: OnDrop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1485,7 +1492,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 10
   m_AttachTransform: {fileID: 7808208669728137258}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -1517,7 +1524,7 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowInteractableHoverMeshes: 1
+  m_ShowInteractableHoverMeshes: 0
   m_InteractableHoverMeshMaterial: {fileID: 0}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
@@ -1548,8 +1555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b230727a644cf4f9cc16e911c252f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInSocketTrigger: 0
+  canBeAttached: 0
   isAttached: 0
+  attachedObj: {fileID: 0}
 --- !u!54 &2794147580524805901
 Rigidbody:
   m_ObjectHideFlags: 0

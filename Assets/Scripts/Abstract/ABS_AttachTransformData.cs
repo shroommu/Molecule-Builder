@@ -5,6 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public abstract class ABS_AttachTransformData : MonoBehaviour
 {
-    public bool isInSocketTrigger = false;
+    public bool canBeAttached = false;
     public bool isAttached = false;
+
+    public GameObject attachedObj;
 }

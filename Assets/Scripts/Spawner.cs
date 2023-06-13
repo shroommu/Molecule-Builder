@@ -9,6 +9,6 @@ public class Spawner : MonoBehaviour
 
     public void Spawn()
     {
-        Instantiate(ballPrefab, spawnPoint);
+        Instantiate(ballPrefab, spawnPoint.position, spawnPoint.rotation);
     }
 }

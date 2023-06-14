@@ -9,16 +9,16 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
     {
         if (other.gameObject.GetComponent<Stick_AttachTransformData>())
         {
-            if (
-                !other.gameObject.GetComponent<Stick_AttachTransformData>().isAttached
-                && other.transform.parent.gameObject
-                    .GetComponent<XRGrabInteractable>()
-                    .interactionLayers == InteractionLayerMask.GetMask("Attached Object")
-                && !other.gameObject.GetComponent<Stick_AttachTransformData>().attachedObj
-                    != gameObject
-            )
+            if (!other.gameObject.GetComponent<Stick_AttachTransformData>().isAttached)
             {
-                gameObject.GetComponent<XRSocketInteractor>().enabled = false;
+                if (
+                    other.transform.parent.gameObject
+                        .GetComponent<XRGrabInteractable>()
+                        .interactionLayers == InteractionLayerMask.GetMask("Attached Stick")
+                )
+                {
+                    gameObject.GetComponent<XRSocketInteractor>().enabled = false;
+                }
                 canBeAttached = true;
                 attachedObj = other.gameObject;
             }

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LayerNames:
   - Default
-  - Attached Object
   - Ball
+  - Attached Ball
   - Stick
-  - 
+  - Attached Stick
   - 
   - 
   - 

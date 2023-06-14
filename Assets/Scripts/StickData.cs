@@ -45,7 +45,8 @@ public class StickData : MonoBehaviour
             {
                 gameObject.GetComponent<XRGrabInteractable>().attachTransform = transform;
                 gameObject.GetComponent<XRGrabInteractable>().interactionLayers =
-                    InteractionLayerMask.GetMask("Attached Object");
+                    InteractionLayerMask.GetMask("Attached Stick");
+                Debug.Log(attachTransformPoint.attachedObj);
                 attachTransformPoint.attachedObj.transform.parent.gameObject
                     .GetComponent<BallData>()
                     .OnDrop();

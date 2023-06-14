@@ -7,6 +7,5 @@ public abstract class ABS_AttachTransformData : MonoBehaviour
 {
     public bool canBeAttached = false;
     public bool isAttached = false;
-
     public GameObject attachedObj;
 }

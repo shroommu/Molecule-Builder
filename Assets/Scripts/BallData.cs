@@ -9,7 +9,7 @@ public class BallData : MonoBehaviour
 
     public List<XRSocketInteractor> sockets;
 
-    private int activeSockets = 1;
+    private int activeSocket = 0;
 
     public void OnDrop()
     {
@@ -18,22 +18,21 @@ public class BallData : MonoBehaviour
 
     public void ActivateNextSocket()
     {
-        sockets[activeSockets].gameObject.SetActive(true);
-        activeSockets++;
+        activeSocket++;
+        sockets[activeSocket].gameObject.SetActive(true);
     }
 
     public void SetAttachTransformStates()
     {
-        if (
-            sockets[activeSockets - 1].gameObject
-                .GetComponent<Ball_AttachTransformData>()
-                .attachedObj
-        )
+        Debug.Log(
+            sockets[activeSocket].gameObject.GetComponent<Ball_AttachTransformData>().attachedObj
+        );
+
+        if (sockets[activeSocket].gameObject.GetComponent<Ball_AttachTransformData>().attachedObj)
         {
-            sockets[activeSockets - 1].gameObject
-                .GetComponent<Ball_AttachTransformData>()
-                .isAttached = true;
-            sockets[activeSockets - 1].gameObject
+            sockets[activeSocket].gameObject.GetComponent<Ball_AttachTransformData>().isAttached =
+                true;
+            sockets[activeSocket].gameObject
                 .GetComponent<Ball_AttachTransformData>()
                 .attachedObj.transform.parent.gameObject.GetComponent<StickData>()
                 .OnDrop();
@@ -44,9 +43,7 @@ public class BallData : MonoBehaviour
 
     public void DeactivateCurrentSocket()
     {
-        sockets[activeSockets - 1].interactionLayers = InteractionLayerMask.GetMask(
-            "Attached Object"
-        );
-        sockets[activeSockets - 1].showInteractableHoverMeshes = false;
+        sockets[activeSocket].interactionLayers = InteractionLayerMask.GetMask("Attached Stick");
+        sockets[activeSocket].showInteractableHoverMeshes = false;
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Ball_AttachTransformData : ABS_AttachTransformData
 {
+    public int socketIndex;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Stick_AttachTransformData>())
@@ -19,6 +21,7 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
                 {
                     gameObject.GetComponent<XRSocketInteractor>().enabled = false;
                 }
+                transform.parent.gameObject.GetComponent<BallData>().activeSocket = socketIndex;
                 canBeAttached = true;
                 attachedObj = other.gameObject;
             }
@@ -29,6 +32,7 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
     {
         if (other.gameObject.GetComponent<Stick_AttachTransformData>())
         {
+            transform.parent.gameObject.GetComponent<BallData>().activeSocket = -1;
             gameObject.GetComponent<XRSocketInteractor>().enabled = true;
             canBeAttached = false;
             attachedObj = null;

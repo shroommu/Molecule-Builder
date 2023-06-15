@@ -693,19 +693,7 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ApplyAttachTransform, Assembly-CSharp
-        m_MethodName: Test
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -3610,7 +3598,7 @@ PrefabInstance:
     - target: {fileID: 7808208668699571765, guid: 980d507a42e065e4db8ff54c0f93e311,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.12
+      value: 1.1526
       objectReference: {fileID: 0}
     - target: {fileID: 7808208668699571765, guid: 980d507a42e065e4db8ff54c0f93e311,
         type: 3}

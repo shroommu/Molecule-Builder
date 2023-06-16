@@ -7,35 +7,27 @@ public class Stick_AttachTransformData : ABS_AttachTransformData
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Ball_AttachTransformData>())
+        if (
+            other.gameObject.GetComponent<Ball_AttachTransformData>()
+            && !isAttached
+            && !other.gameObject.GetComponent<Ball_AttachTransformData>().isAttached
+        )
         {
             canBeAttached = true;
             attachedObj = other.gameObject;
-        }
-    }
 
-    void OnTriggerStay(Collider other)
-    {
-        if (
-            other.gameObject.GetComponent<Ball_AttachTransformData>()
-            && !other.gameObject.GetComponent<Ball_AttachTransformData>().isAttached
-            && !isAttached
-        )
-        {
-            Transform ball = other.transform.parent;
-            Transform ballSocketAttachTransform = other.gameObject
-                .GetComponent<XRSocketInteractor>()
-                .attachTransform;
-            Transform stick = transform.parent;
+            Transform ballSocketTransform = other.transform;
             Transform stickSocketAttachTransform = gameObject
                 .GetComponent<XRSocketInteractor>()
                 .attachTransform;
 
-            Quaternion newRotation =
-                stick.rotation
-                * Quaternion.Inverse((ball.rotation * ballSocketAttachTransform.rotation));
+            Vector3 newRotation = new Vector3(
+                ballSocketTransform.rotation.x,
+                ballSocketTransform.rotation.y,
+                180
+            );
 
-            stickSocketAttachTransform.rotation = newRotation;
+            stickSocketAttachTransform.localRotation = Quaternion.Euler(newRotation);
         }
     }
 
@@ -45,6 +37,8 @@ public class Stick_AttachTransformData : ABS_AttachTransformData
         {
             canBeAttached = false;
             attachedObj = null;
+            gameObject.GetComponent<XRSocketInteractor>().attachTransform.rotation =
+                Quaternion.identity;
         }
     }
 }

@@ -3569,7 +3569,7 @@ PrefabInstance:
     - target: {fileID: 3418166491918015071, guid: 6f8d96ed971ea2d428d3da3be7147927,
         type: 3}
       propertyPath: m_Name
-      value: Stick (2)
+      value: Stick
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f8d96ed971ea2d428d3da3be7147927, type: 3}

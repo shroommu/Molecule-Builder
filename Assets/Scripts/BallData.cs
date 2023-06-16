@@ -19,7 +19,11 @@ public class BallData : MonoBehaviour
 
     public void SetAttachTransformStates()
     {
-        if (sockets[activeSocket].gameObject.GetComponent<Ball_AttachTransformData>().attachedObj)
+        if (
+            activeSocket > -1
+            && sockets[activeSocket].gameObject.GetComponent<Ball_AttachTransformData>().attachedObj
+            && !sockets[activeSocket].gameObject.GetComponent<Ball_AttachTransformData>().isAttached
+        )
         {
             sockets[activeSocket].gameObject.GetComponent<Ball_AttachTransformData>().isAttached =
                 true;

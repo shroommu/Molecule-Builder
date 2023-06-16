@@ -13,14 +13,14 @@ public class StickData : MonoBehaviour
     public void SetChildAttachedStates()
     {
         if (
-            stickSocketTop.GetComponent<Stick_AttachTransformData>().canBeAttached
+            stickSocketTop.GetComponent<Stick_AttachTransformData>().attachedObj
             && !stickSocketTop.GetComponent<Stick_AttachTransformData>().isAttached
         )
         {
             stickSocketTop.GetComponent<Stick_AttachTransformData>().isAttached = true;
         }
         if (
-            stickSocketBottom.GetComponent<Stick_AttachTransformData>().canBeAttached
+            stickSocketBottom.GetComponent<Stick_AttachTransformData>().attachedObj
             && !stickSocketBottom.GetComponent<Stick_AttachTransformData>().isAttached
         )
         {
@@ -30,7 +30,6 @@ public class StickData : MonoBehaviour
 
     public async void OnDrop()
     {
-        SetChildAttachedStates();
         await Task.Delay((int)(waitSeconds * 1000));
 
         Stick_AttachTransformData[] attachTransformPoints =
@@ -41,7 +40,7 @@ public class StickData : MonoBehaviour
 
         foreach (Stick_AttachTransformData attachTransformPoint in attachTransformPoints)
         {
-            if (attachTransformPoint.isAttached)
+            if (!attachTransformPoint.isAttached && attachTransformPoint.attachedObj)
             {
                 gameObject.GetComponent<XRGrabInteractable>().attachTransform = transform;
                 gameObject.GetComponent<XRGrabInteractable>().interactionLayers =
@@ -49,10 +48,11 @@ public class StickData : MonoBehaviour
                 attachTransformPoint.attachedObj.transform.parent.gameObject
                     .GetComponent<BallData>()
                     .OnDrop();
+                AddSocketToStick();
                 break;
             }
         }
-        AddSocketToStick();
+        SetChildAttachedStates();
     }
 
     public void AddSocketToStick()

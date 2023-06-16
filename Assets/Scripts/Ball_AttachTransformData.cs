@@ -30,7 +30,7 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<Stick_AttachTransformData>())
+        if (other.gameObject.GetComponent<Stick_AttachTransformData>() && !isAttached)
         {
             transform.parent.gameObject.GetComponent<BallData>().activeSocket = -1;
             gameObject.GetComponent<XRSocketInteractor>().enabled = true;

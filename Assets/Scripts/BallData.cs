@@ -14,11 +14,6 @@ public class BallData : MonoBehaviour
 
     public void OnDrop()
     {
-        SetAttachTransformStates();
-    }
-
-    public void SetAttachTransformStates()
-    {
         if (
             activeSocket > -1
             && sockets[activeSocket].gameObject.GetComponent<Ball_AttachTransformData>().attachedObj

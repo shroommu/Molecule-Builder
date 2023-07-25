@@ -42,7 +42,8 @@ public class StickData : MonoBehaviour
         {
             if (!attachTransformPoint.isAttached && attachTransformPoint.attachedObj)
             {
-                gameObject.GetComponent<XRGrabInteractable>().attachTransform = transform;
+                Debug.Log(attachTransformPoint.gameObject.name);
+                // gameObject.GetComponent<XRGrabInteractable>().attachTransform = transform;
                 gameObject.GetComponent<XRGrabInteractable>().interactionLayers =
                     InteractionLayerMask.GetMask("Attached Stick");
                 attachTransformPoint.attachedObj.transform.parent.gameObject

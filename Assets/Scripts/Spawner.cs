@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject ballPrefab;
+    public GameObject prefab;
     public Transform spawnPoint;
+
+    public int prefabNumber = 1;
 
     public void Spawn()
     {
-        Instantiate(ballPrefab, spawnPoint.position, spawnPoint.rotation);
+        GameObject obj = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
+        obj.name = prefab.name + " Copy " + prefabNumber.ToString();
+        prefabNumber++;
     }
 }

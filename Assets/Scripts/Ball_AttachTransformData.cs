@@ -7,6 +7,8 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
 {
     public int socketIndex;
 
+    public Vector3 rotationData;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Stick_AttachTransformData>())
@@ -21,7 +23,8 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
                 {
                     gameObject.GetComponent<XRSocketInteractor>().enabled = false;
                 }
-                transform.parent.gameObject.GetComponent<BallData>().activeSocket = socketIndex;
+                transform.parent.gameObject.GetComponent<BallData>().activeSocketIndex =
+                    socketIndex;
                 canBeAttached = true;
                 attachedObj = other.gameObject;
             }
@@ -32,7 +35,7 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
     {
         if (other.gameObject.GetComponent<Stick_AttachTransformData>() && !isAttached)
         {
-            transform.parent.gameObject.GetComponent<BallData>().activeSocket = -1;
+            transform.parent.gameObject.GetComponent<BallData>().activeSocketIndex = -1;
             gameObject.GetComponent<XRSocketInteractor>().enabled = true;
             canBeAttached = false;
             attachedObj = null;

@@ -7,7 +7,8 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
 {
     public int socketIndex;
 
-    public Vector3 rotationData;
+    public Vector3 crossProduct;
+    public float rotationAngle;
 
     void OnTriggerEnter(Collider other)
     {
@@ -28,6 +29,14 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
                 canBeAttached = true;
                 attachedObj = other.gameObject;
             }
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (attachedObj.GetComponent<XRSocketInteractor>().enabled == true)
+        {
+            crossProduct = transform.parent.GetComponent<BallData>().CalculateCrossProduct();
         }
     }
 

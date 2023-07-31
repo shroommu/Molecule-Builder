@@ -1060,7 +1060,8 @@ MonoBehaviour:
   isAttached: 0
   attachedObj: {fileID: 0}
   socketIndex: 1
-  rotationData: {x: 72, y: 0, z: 0}
+  crossProduct: {x: 0, y: 0, z: 0}
+  rotationAngle: 289.5
 --- !u!54 &6419488090157718976
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1229,7 +1230,8 @@ MonoBehaviour:
   isAttached: 0
   attachedObj: {fileID: 0}
   socketIndex: 3
-  rotationData: {x: 330, y: 39.5, z: 70}
+  crossProduct: {x: 0, y: 0, z: 0}
+  rotationAngle: 289.5
 --- !u!54 &4486390397109930974
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1429,7 +1431,8 @@ MonoBehaviour:
   isAttached: 0
   attachedObj: {fileID: 0}
   socketIndex: 2
-  rotationData: {x: 332, y: 4.9999995, z: 290}
+  crossProduct: {x: 0, y: 0, z: 0}
+  rotationAngle: 289.5
 --- !u!54 &7284185969734623731
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1849,7 +1852,8 @@ MonoBehaviour:
   isAttached: 0
   attachedObj: {fileID: 0}
   socketIndex: 0
-  rotationData: {x: 0, y: 9.5, z: 180}
+  crossProduct: {x: 0, y: 0, z: 1}
+  rotationAngle: 180
 --- !u!54 &2794147580524805901
 Rigidbody:
   m_ObjectHideFlags: 0

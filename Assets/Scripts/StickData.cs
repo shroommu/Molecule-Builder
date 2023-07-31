@@ -10,6 +10,29 @@ public class StickData : MonoBehaviour
     public GameObject stickSocketBottom;
     public float waitSeconds = 0.5f;
 
+    public bool applyRotation = false;
+
+    void Update()
+    {
+        if (applyRotation)
+        {
+            applyRotation = false;
+            stickSocketTop
+                .GetComponent<XRSocketInteractor>()
+                .attachTransform.RotateAround(
+                    stickSocketTop.GetComponent<XRSocketInteractor>().attachTransform.position,
+                    stickSocketTop
+                        .GetComponent<Stick_AttachTransformData>()
+                        .attachedObj.GetComponent<Ball_AttachTransformData>()
+                        .crossProduct,
+                    stickSocketTop
+                        .GetComponent<Stick_AttachTransformData>()
+                        .attachedObj.GetComponent<Ball_AttachTransformData>()
+                        .rotationAngle
+                );
+        }
+    }
+
     public void SetChildAttachedStates()
     {
         if (
@@ -57,12 +80,19 @@ public class StickData : MonoBehaviour
             {
                 attachTransformPoint.GetComponent<XRSocketInteractor>().interactionLayers =
                     InteractionLayerMask.GetMask("Attached Ball");
+
                 attachTransformPoint
                     .GetComponent<XRSocketInteractor>()
-                    .attachTransform.Rotate(
+                    .attachTransform.RotateAround(
+                        attachTransformPoint
+                            .GetComponent<XRSocketInteractor>()
+                            .attachTransform.position,
                         attachTransformPoint.attachedObj
                             .GetComponent<Ball_AttachTransformData>()
-                            .rotationData
+                            .crossProduct,
+                        attachTransformPoint.attachedObj
+                            .GetComponent<Ball_AttachTransformData>()
+                            .rotationAngle
                     );
             }
         }

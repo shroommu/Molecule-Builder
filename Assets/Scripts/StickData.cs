@@ -6,48 +6,27 @@ using System.Threading.Tasks;
 
 public class StickData : MonoBehaviour
 {
-    public GameObject stickSocketTop;
-    public GameObject stickSocketBottom;
+    public List<Stick_AttachTransformData> stickSocketData;
+
+    private List<XRSocketInteractor> stickSockets = new List<XRSocketInteractor>();
     public float waitSeconds = 0.5f;
 
-    public bool applyRotation = false;
-
-    void Update()
+    void Start()
     {
-        if (applyRotation)
+        for (int i = 0; i < stickSocketData.Count; i++)
         {
-            applyRotation = false;
-            stickSocketTop
-                .GetComponent<XRSocketInteractor>()
-                .attachTransform.RotateAround(
-                    stickSocketTop.GetComponent<XRSocketInteractor>().attachTransform.position,
-                    stickSocketTop
-                        .GetComponent<Stick_AttachTransformData>()
-                        .attachedObj.GetComponent<Ball_AttachTransformData>()
-                        .crossProduct,
-                    stickSocketTop
-                        .GetComponent<Stick_AttachTransformData>()
-                        .attachedObj.GetComponent<Ball_AttachTransformData>()
-                        .rotationAngle
-                );
+            stickSockets.Add(stickSocketData[i].gameObject.GetComponent<XRSocketInteractor>());
         }
     }
 
     public void SetChildAttachedStates()
     {
-        if (
-            stickSocketTop.GetComponent<Stick_AttachTransformData>().attachedObj
-            && !stickSocketTop.GetComponent<Stick_AttachTransformData>().isAttached
-        )
+        for (int i = 0; i < stickSocketData.Count; i++)
         {
-            stickSocketTop.GetComponent<Stick_AttachTransformData>().isAttached = true;
-        }
-        if (
-            stickSocketBottom.GetComponent<Stick_AttachTransformData>().attachedObj
-            && !stickSocketBottom.GetComponent<Stick_AttachTransformData>().isAttached
-        )
-        {
-            stickSocketBottom.GetComponent<Stick_AttachTransformData>().isAttached = true;
+            if (stickSocketData[i].attachedObj && !stickSocketData[i].isAttached)
+            {
+                stickSocketData[i].isAttached = true;
+            }
         }
     }
 
@@ -55,45 +34,38 @@ public class StickData : MonoBehaviour
     {
         await Task.Delay((int)(waitSeconds * 1000));
 
-        Stick_AttachTransformData[] attachTransformPoints =
+        for (int i = 0; i < stickSocketData.Count; i++)
         {
-            stickSocketTop.GetComponent<Stick_AttachTransformData>(),
-            stickSocketBottom.GetComponent<Stick_AttachTransformData>()
-        };
-
-        foreach (Stick_AttachTransformData attachTransformPoint in attachTransformPoints)
-        {
-            if (!attachTransformPoint.isAttached && attachTransformPoint.attachedObj)
+            if (!stickSocketData[i].isAttached && stickSocketData[i].attachedObj)
             {
                 gameObject.GetComponent<XRGrabInteractable>().interactionLayers =
                     InteractionLayerMask.GetMask("Attached Stick");
-                attachTransformPoint.attachedObj.transform.parent.gameObject
+                stickSocketData[i].attachedObj.transform.parent.gameObject
                     .GetComponent<BallData>()
                     .OnDrop();
                 SetChildAttachedStates();
             }
 
-            if (
-                attachTransformPoint.GetComponent<XRSocketInteractor>().enabled == true
-                && attachTransformPoint.attachedObj
-            )
+            if (stickSockets[i].enabled == true && stickSocketData[i].attachedObj)
             {
-                attachTransformPoint.GetComponent<XRSocketInteractor>().interactionLayers =
-                    InteractionLayerMask.GetMask("Attached Ball");
+                stickSockets[i].interactionLayers = InteractionLayerMask.GetMask("Attached Ball");
 
-                attachTransformPoint
-                    .GetComponent<XRSocketInteractor>()
-                    .attachTransform.RotateAround(
-                        attachTransformPoint
-                            .GetComponent<XRSocketInteractor>()
-                            .attachTransform.position,
-                        attachTransformPoint.attachedObj
-                            .GetComponent<Ball_AttachTransformData>()
-                            .crossProduct,
-                        attachTransformPoint.attachedObj
-                            .GetComponent<Ball_AttachTransformData>()
-                            .rotationAngle
-                    );
+                Ball_AttachTransformData attachedBallSocket = stickSocketData[
+                    i
+                ].attachedObj.GetComponent<Ball_AttachTransformData>();
+
+                stickSockets[i].attachTransform.RotateAround(
+                    stickSockets[i].attachTransform.position,
+                    attachedBallSocket.crossProduct,
+                    attachedBallSocket.rotationAngle
+                );
+
+                if (attachedBallSocket.socketIndex == 0)
+                {
+                    Vector3 newRot = stickSockets[i].attachTransform.rotation.eulerAngles;
+                    newRot.y = 0;
+                    stickSockets[i].attachTransform.rotation = Quaternion.Euler(newRot);
+                }
             }
         }
 
@@ -102,19 +74,13 @@ public class StickData : MonoBehaviour
 
     public void AddSocketToStick()
     {
-        if (
-            stickSocketTop.GetComponent<Stick_AttachTransformData>().isAttached
-            && !stickSocketBottom.GetComponent<Stick_AttachTransformData>().isAttached
-        )
+        if (stickSocketData[0].isAttached && !stickSocketData[1].isAttached)
         {
-            stickSocketBottom.GetComponent<XRSocketInteractor>().enabled = true;
+            stickSockets[1].enabled = true;
         }
-        if (
-            stickSocketBottom.GetComponent<Stick_AttachTransformData>().isAttached
-            && !stickSocketTop.GetComponent<Stick_AttachTransformData>().isAttached
-        )
+        if (stickSocketData[1].isAttached && !stickSocketData[0].isAttached)
         {
-            stickSocketTop.GetComponent<XRSocketInteractor>().enabled = true;
+            stickSockets[0].enabled = true;
         }
     }
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 137104010169862580}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Attach Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3418166491135800956}
   - component: {fileID: 3418166491135800955}
   - component: {fileID: 6318894999095548058}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Socket Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 3418166491538897045}
   - component: {fileID: 3418166491538897044}
   - component: {fileID: 2289723092207754672}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Socket Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 3418166491918015057}
   - component: {fileID: 3418166491918015062}
   - component: {fileID: 2132194957591121400}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,8 +580,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6662f6acecb46d34cac675bd754bdc82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stickSocketTop: {fileID: 3418166491538897041}
-  stickSocketBottom: {fileID: 3418166491135800952}
+  stickSocketData:
+  - {fileID: 2289723092207754672}
+  - {fileID: 6318894999095548058}
   waitSeconds: 0.15
 --- !u!114 &2132194957591121400
 MonoBehaviour:
@@ -606,7 +607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5388528360466394235}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Attach Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

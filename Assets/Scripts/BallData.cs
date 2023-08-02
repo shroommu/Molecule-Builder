@@ -9,33 +9,29 @@ public class BallData : MonoBehaviour
 
     public List<GameObject> sockets;
 
-    [HideInInspector]
-    public int activeSocketIndex = -1;
-
-    private Ball_AttachTransformData activeSocketData = null;
+    public Ball_AttachTransformData activeSocketData = null;
 
     public Vector3 CalculateCrossProduct()
     {
-        Transform activeSocketTransform = activeSocketData.transform;
-        Vector3 worldSpaceActiveSocketUpVector = activeSocketTransform.up;
-        Vector3 worldSpaceStickSocketVector = activeSocketData.attachedObj.transform.up;
-        float angleBetween = Vector3.Angle(
-            worldSpaceActiveSocketUpVector,
-            worldSpaceStickSocketVector
-        );
-        Vector3 crossProduct = Vector3.Cross(
-            worldSpaceActiveSocketUpVector,
-            worldSpaceStickSocketVector
-        );
-        return crossProduct;
+        Vector3 activeSocketUpVector = activeSocketData.transform.up;
+        Vector3 stickSocketVector = activeSocketData.attachedObj.transform.up;
+        return Vector3.Cross(activeSocketUpVector, stickSocketVector);
+    }
+
+    public void SetActiveSocketData(int socketIndex)
+    {
+        activeSocketData = sockets[socketIndex].GetComponent<Ball_AttachTransformData>();
+    }
+
+    public void ResetActiveSocketData()
+    {
+        activeSocketData = null;
     }
 
     public void OnDrop()
     {
-        if (activeSocketIndex > -1)
+        if (activeSocketData)
         {
-            activeSocketData = sockets[activeSocketIndex].GetComponent<Ball_AttachTransformData>();
-
             if (activeSocketData.attachedObj && !activeSocketData.isAttached)
             {
                 activeSocketData.isAttached = true;

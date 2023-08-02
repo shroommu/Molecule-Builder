@@ -6,7 +6,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Ball_AttachTransformData : ABS_AttachTransformData
 {
     public int socketIndex;
-
     public Vector3 crossProduct;
     public float rotationAngle;
 
@@ -14,8 +13,13 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
     {
         if (other.gameObject.GetComponent<Stick_AttachTransformData>())
         {
+            transform.parent.gameObject.GetComponent<BallData>().SetActiveSocketData(socketIndex);
+
             if (!other.gameObject.GetComponent<Stick_AttachTransformData>().isAttached)
             {
+                canBeAttached = true;
+                attachedObj = other.gameObject;
+
                 if (
                     other.transform.parent.gameObject
                         .GetComponent<XRGrabInteractable>()
@@ -24,17 +28,17 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
                 {
                     gameObject.GetComponent<XRSocketInteractor>().enabled = false;
                 }
-                transform.parent.gameObject.GetComponent<BallData>().activeSocketIndex =
-                    socketIndex;
-                canBeAttached = true;
-                attachedObj = other.gameObject;
             }
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (attachedObj.GetComponent<XRSocketInteractor>().enabled == true)
+        if (
+            !isAttached
+            && attachedObj
+            && attachedObj?.GetComponent<XRSocketInteractor>()?.enabled == true
+        )
         {
             crossProduct = transform.parent.GetComponent<BallData>().CalculateCrossProduct();
         }
@@ -44,7 +48,7 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
     {
         if (other.gameObject.GetComponent<Stick_AttachTransformData>() && !isAttached)
         {
-            transform.parent.gameObject.GetComponent<BallData>().activeSocketIndex = -1;
+            transform.parent.gameObject.GetComponent<BallData>().ResetActiveSocketData();
             gameObject.GetComponent<XRSocketInteractor>().enabled = true;
             canBeAttached = false;
             attachedObj = null;

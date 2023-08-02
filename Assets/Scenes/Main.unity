@@ -180,7 +180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 162941138}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ball Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 348570166}
   - component: {fileID: 348570165}
   - component: {fileID: 348570164}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stick Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 364578165}
   - component: {fileID: 364578166}
   - component: {fileID: 364578167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -920,7 +920,7 @@ GameObject:
   - component: {fileID: 712900741}
   - component: {fileID: 712900743}
   - component: {fileID: 712900744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1470,7 +1470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 918234949}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: '[LeftHand Controller] Attach'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1743,7 +1743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1140708866}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1889,7 +1889,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1222673916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stick Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2431,7 +2431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1671554471}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2577,7 +2577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1890798342}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: '[RightHand Controller] Attach'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2747,7 +2747,7 @@ GameObject:
   - component: {fileID: 2054925204}
   - component: {fileID: 2054925203}
   - component: {fileID: 2054925205}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ball Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3646,11 +3646,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5807724110042124998, guid: 980d507a42e065e4db8ff54c0f93e311,
-        type: 3}
-      propertyPath: crossProduct.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7808208668699571759, guid: 980d507a42e065e4db8ff54c0f93e311,
         type: 3}
       propertyPath: m_Name

@@ -11,6 +11,26 @@ public class StickData : MonoBehaviour
     private List<XRSocketInteractor> stickSockets = new List<XRSocketInteractor>();
     public float waitSeconds = 0.5f;
 
+    public Vector3 crossProduct;
+    public float rotateAroundAngle = 0;
+
+    public int socketIndex = 0;
+
+    public bool shouldRotate = false;
+
+    void Update()
+    {
+        if (shouldRotate)
+        {
+            shouldRotate = false;
+            stickSockets[socketIndex].attachTransform.RotateAround(
+                stickSockets[socketIndex].attachTransform.position,
+                stickSockets[socketIndex].attachTransform.up,
+                rotateAroundAngle
+            );
+        }
+    }
+
     void Start()
     {
         for (int i = 0; i < stickSocketData.Count; i++)
@@ -50,17 +70,22 @@ public class StickData : MonoBehaviour
             {
                 stickSockets[i].interactionLayers = InteractionLayerMask.GetMask("Attached Ball");
 
-                Ball_AttachTransformData attachedBallSocket = stickSocketData[
+                Ball_AttachTransformData attachedBallSocketData = stickSocketData[
                     i
                 ].attachedObj.GetComponent<Ball_AttachTransformData>();
 
+                BallData attachedBallData =
+                    attachedBallSocketData.transform.parent.gameObject.GetComponent<BallData>();
+
+                crossProduct = attachedBallData.CalculateCrossProduct();
+
                 stickSockets[i].attachTransform.RotateAround(
                     stickSockets[i].attachTransform.position,
-                    attachedBallSocket.crossProduct,
-                    attachedBallSocket.rotationAngle
+                    attachedBallData.CalculateCrossProduct(),
+                    attachedBallSocketData.rotationAngle
                 );
 
-                if (attachedBallSocket.socketIndex == 0)
+                if (attachedBallSocketData.socketIndex == 0)
                 {
                     Vector3 newRot = stickSockets[i].attachTransform.rotation.eulerAngles;
                     newRot.y = 0;

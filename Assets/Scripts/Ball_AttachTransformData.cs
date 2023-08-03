@@ -9,8 +9,6 @@ public class Ball_AttachTransformData : ABS_AttachTransformData
     public Vector3 crossProduct;
     public float rotationAngle;
 
-    private void Start() { }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Stick_AttachTransformData>())

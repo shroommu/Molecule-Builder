@@ -1723,14 +1723,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b9f219a49fcf740a03cdc44a1b2591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnchor: 0
+  isAnchor: 1
   sockets:
   - {fileID: 7808208669090172267}
   - {fileID: 1043237897448803572}
   - {fileID: 5829022055638938847}
   - {fileID: 4089781904340749884}
-  activeSocketIndex: -1
   activeSocketData: {fileID: 0}
+  moleculeData: {fileID: 0}
 --- !u!114 &7835908696599120761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1743,8 +1743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82eecc6ab8b5e254080e15c444594128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchor: {fileID: 0}
-  parts: []
+  anchor: {fileID: 1550843593904523543}
 --- !u!1 &7808208669090172267
 GameObject:
   m_ObjectHideFlags: 0

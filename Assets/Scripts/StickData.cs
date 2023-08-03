@@ -11,6 +11,8 @@ public class StickData : MonoBehaviour
     private List<XRSocketInteractor> stickSockets = new List<XRSocketInteractor>();
     public float waitSeconds = 0.5f;
 
+    public MoleculeData moleculeData;
+
     public Vector3 crossProduct;
     public float rotateAroundAngle = 0;
 
@@ -37,6 +39,8 @@ public class StickData : MonoBehaviour
         {
             stickSockets.Add(stickSocketData[i].gameObject.GetComponent<XRSocketInteractor>());
         }
+
+        moleculeData = gameObject.GetComponent<MoleculeData>();
     }
 
     public void SetChildAttachedStates()
@@ -63,6 +67,10 @@ public class StickData : MonoBehaviour
                 stickSocketData[i].attachedObj.transform.parent.gameObject
                     .GetComponent<BallData>()
                     .OnDrop();
+
+                moleculeData.DetermineAnchor(
+                    stickSocketData[i].attachedObj.transform.parent.GetComponent<MoleculeData>()
+                );
                 SetChildAttachedStates();
             }
 
@@ -76,6 +84,10 @@ public class StickData : MonoBehaviour
 
                 BallData attachedBallData =
                     attachedBallSocketData.transform.parent.gameObject.GetComponent<BallData>();
+
+                moleculeData.anchor = moleculeData.DetermineAnchor(
+                    attachedBallData.gameObject.GetComponent<MoleculeData>()
+                );
 
                 crossProduct = attachedBallData.CalculateCrossProduct();
 

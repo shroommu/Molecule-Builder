@@ -5,11 +5,18 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class BallData : MonoBehaviour
 {
-    public bool isAnchor = false;
+    public bool isAnchor = true;
 
     public List<GameObject> sockets;
 
     public Ball_AttachTransformData activeSocketData = null;
+
+    public MoleculeData moleculeData;
+
+    void Start()
+    {
+        moleculeData = gameObject.GetComponent<MoleculeData>();
+    }
 
     public Vector3 CalculateCrossProduct()
     {
@@ -30,21 +37,24 @@ public class BallData : MonoBehaviour
 
     public void OnDrop()
     {
-        if (activeSocketData)
+        if (activeSocketData && activeSocketData.attachedObj && !activeSocketData.isAttached)
         {
-            if (activeSocketData.attachedObj && !activeSocketData.isAttached)
-            {
-                activeSocketData.isAttached = true;
-                activeSocketData.attachedObj.transform.parent.gameObject
-                    .GetComponent<StickData>()
-                    .OnDrop();
+            activeSocketData.isAttached = true;
+            activeSocketData.attachedObj.transform.parent.gameObject
+                .GetComponent<StickData>()
+                .OnDrop();
 
-                gameObject.GetComponent<XRGrabInteractable>().interactionLayers =
-                    InteractionLayerMask.GetMask("Attached Ball");
+            isAnchor =
+                this
+                == moleculeData.DetermineAnchor(
+                    activeSocketData.attachedObj.transform.parent.gameObject.GetComponent<MoleculeData>()
+                );
 
-                activeSocketData.GetComponent<XRSocketInteractor>().interactionLayers =
-                    InteractionLayerMask.GetMask("Attached Stick");
-            }
+            gameObject.GetComponent<XRGrabInteractable>().interactionLayers =
+                InteractionLayerMask.GetMask("Attached Ball");
+
+            activeSocketData.GetComponent<XRSocketInteractor>().interactionLayers =
+                InteractionLayerMask.GetMask("Attached Stick");
         }
     }
 }

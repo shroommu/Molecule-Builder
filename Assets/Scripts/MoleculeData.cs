@@ -8,6 +8,8 @@ public class MoleculeData : MonoBehaviour
 
     public HashSet<MoleculeData> parts = new HashSet<MoleculeData>();
 
+    public List<MoleculeData> partsList;
+
     // when new part is connected to the molecule, add it to the parts list
     // and pass the anchor to its MoleculeData
     // anchor is determined by whichever molecule has more parts
@@ -18,10 +20,16 @@ public class MoleculeData : MonoBehaviour
         parts.Add(this);
     }
 
+    void OnUpdateHashSet(MoleculeData newPart)
+    {
+        if (!partsList.Contains(newPart))
+        {
+            partsList.Add(newPart);
+        }
+    }
+
     public BallData DetermineAnchor(MoleculeData other)
     {
-        UpdateAllPartsLists();
-
         if (other.parts.Count > parts.Count)
         {
             anchor = other.anchor;
@@ -31,6 +39,13 @@ public class MoleculeData : MonoBehaviour
             other.anchor = anchor;
         }
 
+        foreach (MoleculeData part in other.parts)
+        {
+            parts.Add(part);
+            OnUpdateHashSet(part);
+        }
+
+        UpdateAllPartsLists();
         UpdateAllAnchors();
 
         return anchor;
@@ -41,6 +56,7 @@ public class MoleculeData : MonoBehaviour
         foreach (MoleculeData part in parts)
         {
             part.parts.Add(this);
+            part.OnUpdateHashSet(this);
         }
     }
 

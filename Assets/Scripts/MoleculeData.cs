@@ -39,6 +39,41 @@ public class MoleculeData : MonoBehaviour
             other.anchor = anchor;
         }
 
+        if (other.parts.Count == 1 && this.parts.Count > 1)
+        {
+            Debug.Log($"1. setting parent of other.transform {other.transform} to {transform}");
+            other.transform.SetParent(transform);
+        }
+        else if (other.parts.Count > 1 && this.parts.Count == 1)
+        {
+            Debug.Log(
+                $"2. setting parent of transform {transform} to other.transform {other.transform}"
+            );
+            transform.SetParent(other.transform);
+        }
+        else if (
+            this.parts.Count == 1
+            && other.parts.Count == 1
+            && anchor == gameObject.GetComponent<BallData>()
+        )
+        {
+            Debug.Log(
+                $"3. setting parent of other.transform {other.transform} to transform {transform}"
+            );
+            other.transform.SetParent(transform);
+        }
+        else if (
+            this.parts.Count == 1
+            && other.parts.Count == 1
+            && anchor != gameObject.GetComponent<BallData>()
+        )
+        {
+            Debug.Log(
+                $"4. setting parent of transform {transform} to other.transform {other.transform}"
+            );
+            transform.SetParent(other.transform);
+        }
+
         foreach (MoleculeData part in other.parts)
         {
             parts.Add(part);
